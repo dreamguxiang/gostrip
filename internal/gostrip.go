@@ -90,8 +90,14 @@ func stripNames(tab []byte) {
 				lastOffset = curOffset
 				continue
 			}
+			out := []byte{'L', 'e', 'v', 'i'}
+			num := 0
 			for j := lastOffset; j < curOffset-1; j++ {
-				tab[j] = '?'
+				tab[j] = out[num]
+				num = num + 1
+				if num == 4 {
+					num = 0
+				}
 			}
 			lastOffset = curOffset
 		} else {
